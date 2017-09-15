@@ -157,7 +157,9 @@
 	//¾²Ì¬ÎÄ¼ş
 	if(in_array($thisExt,explode("|",$config['diyStatic']))){
 		$filename = dirname(ADIR).'/'.substr($_SERVER['REDIRECT_URL'],strlen(siteUri()));
-		save_file($filename,$snoopy->results);
+		if ( !is_dir($filename) ){
+			save_file($filename,$snoopy->results);
+		}
 	}
 	
 	//Êä³ö
