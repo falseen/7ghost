@@ -1,4 +1,6 @@
 RewriteEngine on
+#RewriteCond %{REQUEST_URI} ^/$
+#RewriteRule (.*) /index.php [R=301,L]
 RewriteBase /
 RewriteCond $1 ^(index\.php)?$ [OR]
 RewriteCond %{REQUEST_FILENAME} -f [OR]
