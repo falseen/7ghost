@@ -810,6 +810,11 @@ class Snoopy
 			if ( count($this->cookies) > 0 ) {
 				$cookie_headers .= 'Cookie: ';
 				foreach ( $this->cookies as $cookieKey => $cookieVal ) {
+				if ( is_array($cookieVal) ) {
+					$cookieVal = serialize($cookieVal);
+					}
+				else
+					$cookie_headers .= $cookieKey."=".urlencode($cookieVal)."; ";
 				$cookie_headers .= $cookieKey."=".urlencode($cookieVal)."; ";
 				}
 				$headers .= substr($cookie_headers,0,-2) . "\r\n";
@@ -1023,9 +1028,9 @@ class Snoopy
 		//exit();
 		if(!empty($body)){
 			//exit();
-			//ÉèÖÃÐÎÊ½ÎªPOST      
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ÎªPOST      
     		curl_setopt($curl,CURLOPT_POSTFIELDS, $body);
-    		//ÉèÖÃPost²ÎÊý
+    		//ï¿½ï¿½ï¿½ï¿½Postï¿½ï¿½ï¿½ï¿½
     		curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);  	
 		}
 		if(!empty($this->cookies))
